@@ -10,11 +10,26 @@ This project demonstrates a simple MNIST model for training, drawing digits, and
 
 ## Usage
 
+### Load virtual environment
+
+1. Create a .venv
+
+    ```sh
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+2. Install the requirements
+
+    ```sh
+    python3 -m pip install -r requirements.txt
+    ```
+
 ### Drawing Digits
 
 1. Run the `draw.py` script to open the drawing application:
     ```sh
-    python draw.py
+    python3 draw.py
     ```
 2. Draw a digit on the canvas.
 3. Enter a filename and click "Save" to save the image.
@@ -23,7 +38,7 @@ This project demonstrates a simple MNIST model for training, drawing digits, and
 
 1. Run the `model.py` script to train the model:
     ```sh
-    python model.py --model_name mnist_model.keras --epochs 6
+    python3 model.py --model_name mnist_model.keras --epochs 6
     ```
 2. The trained model will be saved as `mnist_model.keras`.
 
@@ -31,7 +46,7 @@ This project demonstrates a simple MNIST model for training, drawing digits, and
 
 1. Run the `predict.py` script to predict the digit from a saved image:
     ```sh
-    python predict.py --model_name mnist_model.keras --input-file images/0.png
+    python3 predict.py --model_name mnist_model.keras --input-file images/0.png
     ```
 2. The script will output the predicted class and confidence.
 
