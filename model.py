@@ -2,12 +2,12 @@
 
 import tensorflow as tf
 import tensorflow_datasets as tfds
-from tensorflow import keras
 import argparse
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Train a model on the MNIST dataset.')
-parser.add_argument('--model_name', type=str, default='mnist_model.keras', help='Name of the model file to save')
+parser.add_argument('--save', type=str, help='Name of the model file to save as .keras')
+parser.add_argument('--export', type=str, help='Name of the folder to export the model')
 parser.add_argument('--epochs', type=int, default=6, help='Number of epochs to train the model')
 args = parser.parse_args()
 
@@ -75,5 +75,10 @@ model.summary()
 # Show model accuracy
 model.evaluate(ds_test)
 
-# Save the model
-model.save(args.model_name)
+# Save the model based on the chosen option
+if args.save:
+    model.save(args.save)
+elif args.export:
+    model.export(args.export)
+else:
+    print("Model not saved as per user request.")
