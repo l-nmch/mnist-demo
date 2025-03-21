@@ -2,3 +2,6 @@
 *.keras
 *.onnx
 export/
+.install_logs/
+hailo_sdk.client.log
+*.har

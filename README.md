@@ -50,6 +50,53 @@ This project demonstrates a simple MNIST model for training, drawing digits, and
     ```
 2. The script will output the predicted class and confidence.
 
+## Convert model for Hailo NPU
+
+### Export & Convert the model
+
+1. Export the model
+
+    ```sh
+    python3 model.py --export export
+    ```
+
+2. Convert the model to onnx
+
+    ```sh
+    python3 -m tf2onnx.convert --saved-model export --output mnist.onnx
+    ```
+
+### Download Hailo DFC
+
+1. Go to the [Hailo developer zone](https://hailo.ai/developer-zone/software-downloads/)
+2. Download `Hailo Dataflow Compiler – Python package (whl)`
+
+### Install Hailo DFC
+
+1. Install using pip
+
+    ```sh
+    python3 -m pip install hailo_dataflow_compiler-3.30.0-py3-none-linux_x86_64.whl
+    ```
+
+    :warning: This action might break the installed packages version :warning:
+
+2. Configure hailo
+
+    ```sh
+    hailo #Then follow the instructions
+    ```
+
+### Convert the model for your NPU
+
+1. Parse the model
+
+    ```sh
+    hailo parser onnx --hw-arch hailo8l mnist.onnx --tensor-shapes [28,28,1]
+    ```
+
+2. TODO
+
 ## Model Information
 
 ### Summary
